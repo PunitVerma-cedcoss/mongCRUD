@@ -1,0 +1,74 @@
+<div class="h-screen w-screen flex flex-col justify-center items-center">
+    <p class="p-3 text-lg ">Product Details</p>
+    <table>
+        <thead>
+            <th class="p-3 border">Product name</th>
+            <th class="p-3 border">Product category</th>
+            <th class="p-3 border">Product price</th>
+            <th class="p-3 border">Product stock</th>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($data as $doc) {
+            ?>
+                <tr>
+                    <td class="border p-3"><?php echo $doc["product name"] ?></td>
+                    <td class="border p-3"><?php echo $doc["category name"] ?></td>
+                    <td class="border p-3"><?php echo $doc["product price"] ?></td>
+                    <td class="border p-3"><?php echo $doc["product stock"] ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+    <div class="grid grid-cols-12">
+        <div class="col-span-6">
+            <p class="p-3 text-lg ">Product Variations</p>
+            <?php
+            $ctr = 1;
+            foreach ($data[0]["variations"] as $var) {
+            ?>
+                <div class="border p-3 m-2 rounded-lg shadow-lg">
+                    <p class="p-3">variation <?php echo $ctr; ?></p>
+                    <table>
+                        <?php
+                        foreach ($var["variant"] as $k => $v) {
+                        ?>
+                            <tr>
+                                <td class="p-3 border"><?php echo $k ?></td>
+                                <td class="p-3 border"><?php echo $v ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                        <tr>
+                            <td class="p-3 border">Price</td>
+                            <td class="p-3 border"><?php echo $var["price"] ?></td>
+                        </tr>
+                    </table>
+                </div>
+            <?php
+                $ctr++;
+            }
+            ?>
+        </div>
+        <div class="col-span-6">
+            <p class="p-3 text-lg ">Product Metas</p>
+            <div class="p-3 m-2 border rounded-lg shadow-lg">
+                <table>
+                    <?php
+                    foreach ($data[0]["metas"] as $k => $v) {
+                    ?>
+                        <tr>
+                            <td class="p-3 border"><?php echo $k ?></td>
+                            <td class="p-3 border"><?php echo $v ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="w-screen capitalize h-screen flex flex-col justify-center items-center">
+    <div class="w-1/2">
+        <form action="/products" method="post" class="w-full flex items-center justify-center">
+            <input type="text" class="grow px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 border-gray-300 hover:ring-indigo-300 rounded-l-lg border ml-0 shadow-md" name="search" id="" placeholder="search here" required>
+            <button type="submit" class="px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 rounded-r-lg border ml-0 shadow-md">
+                Search Product
+            </button>
+        </form>
+    </div>
+    <div class="w-1/2 flex items-center">
+        <button class="mr-2 px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 rounded-lg border ml-0 m-2 shadow-md">
+            Add Product
+        </button>
+        <?php
+        if (isset($search)) {
+        ?>
+            <div class="px-1 h-6 text-sm text-gray-600 flex justify-center items-center shadow rounded-full border"><?php echo $query ?> <a href="/products">
+                    <ion-icon class="text-2xl text-indigo-600 drop-shadow-lg" name="close-circle"></ion-icon>
+                </a></div>
+        <?php
+        }
+        ?>
+    </div>
+    <table class="shadow-lg">
+        <thead class="text-neutral-800 shadow-md">
+            <th class="p-3 border">Product Name</th>
+            <th class="p-3 border ">Product Category</th>
+            <th class="p-3 border ">Product Price</th>
+            <th class="p-3 border ">Product Stock</th>
+            <th class="p-3 border ">View Product</th>
+            <th class="p-3 border ">Edit Product</th>
+            <th class="p-3 border ">Delete Product</th>
+        </thead>
+        <tbody class="text-gray-700">
+            <?php
+            if (!isset($search)) {
+
+                foreach ($data as $doc) {
+            ?>
+                    <tr class="cursor-pointer odd:bg-white even:bg-gray-100">
+                        <td class="p-3 border"><?php echo $doc["product name"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["category name"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["product price"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["product stock"] ?></td>
+                        <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/details/<?php echo $doc["_id"] ?>">View Product</a></td>
+                        <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/edit/<?php echo $doc["_id"] ?>">Edit Product</a></td>
+                        <td class="p-3 border"><a class="text-red-500 underline italic" href="/products/delete/<?php echo $doc["_id"] ?>">Delete Product</a></td>
+                    </tr>
+                <?php
+                }
+            } else {
+                foreach ($search as $doc) {
+                ?>
+                    <tr class="cursor-pointer odd:bg-white even:bg-gray-100">
+                        <td class="p-3 border"><?php echo $doc["product name"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["category name"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["product price"] ?></td>
+                        <td class="p-3 border"><?php echo $doc["product stock"] ?></td>
+                        <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/details/<?php echo $doc["_id"] ?>">View Product</a></td>
+                        <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/edit/<?php echo $doc["_id"] ?>">Edit Product</a></td>
+                        <td class="p-3 border"><a class="text-red-500 underline italic" href="/products/delete/<?php echo $doc["_id"] ?>">Delete Product</a></td>
+                    </tr>
+            <?php
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+<?php
+$this->assets->OutputCss();
+?>

@@ -1,0 +1,84 @@
+<div class="w-screen h-screen bg-gray-100 flex items-center justify-center">
+    <form action="/products/edit/<?php echo $id ?>" method="post" class="w-full grid grid-cols-12 flex flex-col text-gray-700">
+        <div class="col-span-4 flex flex-col items-center justify-center meta">
+            <?php
+            $mctr = 1;
+            foreach ($data[0]["metas"] as $k => $v) {
+            ?>
+                <div class="max-w-fit flex flex-col justify-center items-center">
+                    <div class="w-full">
+                        <ion-icon name="close-circle" class="closeMeta cursor-pointer text-2xl hover:text-neutral-600 md hydrated" role="img" aria-label="close circle"></ion-icon>
+                    </div>
+                    <input type="text" value="<?php echo $k ?>" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="metaField<?php echo $mctr; ?>" placeholder="add Field" required="">
+                    <input type="text" value="<?php echo $v ?>" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="metaValue<?php echo $mctr; ?>" placeholder="add Value" required="">
+                </div>
+            <?php
+                $mctr++;
+            }
+            ?>
+        </div>
+        <div class="col-span-4 pt-3">
+            <div class="text-6xl text-center text-blue-600">
+                <ion-icon name="add-circle" class="drop-shadow-lg hover:text-blue-500 cursor-pointer hover:ring-2 rounded-full"></ion-icon>
+            </div>
+            <label for="name">
+                <p>Name</p>
+                <input type="text" value="<?php echo $data[0]["product name"] ?>" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="name" id="name">
+            </label>
+            <label for="Category_name">
+                <p class="mt-2">Category name</p>
+                <input type="text" value="<?php echo $data[0]["category name"] ?>" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="category_name" id="category_name">
+            </label>
+            <label for="Price">
+                <p class="mt-2">Price</p>
+                <input type="text" value="<?php echo $data[0]["product price"] ?>" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Price" id="Price">
+            </label>
+            <label for="Stock">
+                <p class="mt-2">Stock</p>
+                <input type="text" value="<?php echo $data[0]["product stock"] ?>" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Stock" id="Price">
+            </label>
+            <label for="submit">
+                <button class="text-white bg-blue-600 w-full mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Update</button>
+            </label>
+            <div class="w-full flex justify-between">
+                <button class="addMeta text-white bg-blue-600 mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Add Meta Informations</button>
+                <button class="addVariations text-white bg-blue-600 mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Add Variations</button>
+            </div>
+
+        </div>
+        <div class="col-span-4 flex flex-col items-center justify-center variations h-screen overflow-auto pt-2">
+            <?php
+            $vctr = 1;
+            foreach ($data[0]['variations'] as $var) {
+            ?>
+                <div class="max-w-fit flex flex-col justify-center items-center">
+                    <div class="w-full">
+                        <ion-icon name="close-circle" class="closeVariation cursor-pointer text-2xl hover:text-neutral-600 md hydrated" role="img" aria-label="close circle"></ion-icon>
+                    </div>
+                    <?php
+                    foreach ($var["variant"] as $k => $v) {
+                    ?>
+                        <div class="p-1 flex flex flex-col varset items-center justify-center ml-8">
+                            <div class="w-full">
+                                <ion-icon name="add-circle" class="addVariationSets cursor-pointer text-2xl hover:text-neutral-600 md hydrated" role="img" aria-label="add circle"></ion-icon>
+                            </div>
+                            <input type="text" value="<?php echo $k ?>" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubField<?php echo $vctr ?>[]" placeholder="Attribute name" required="">
+                            <input type="text" value="<?php echo $v ?>" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubValue<?php echo $vctr ?>[]" placeholder="Attribute Value" required="">
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <input type="text" value="<?php echo $var["price"] ?>" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationPrice<?php echo $vctr ?>[]" placeholder="Price" required="">
+                </div>
+            <?php
+                $vctr++;
+            }
+            ?>
+        </div>
+    </form>
+</div>
+<input type="hidden" value="<?php echo $mctr ?>" id="mCtr">
+<input type="hidden" value="<?php echo $vctr ?>" id="vCtr">
+<?php
+$this->assets->outputJs();
+?>

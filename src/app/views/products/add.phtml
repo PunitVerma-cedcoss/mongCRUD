@@ -1,0 +1,40 @@
+<div class="w-screen h-screen bg-gray-100 flex items-center justify-center">
+    <form action="/products/add" method="post" class="w-full grid grid-cols-12 flex flex-col text-gray-700">
+        <div class="col-span-4 flex flex-col items-center justify-center meta">
+        </div>
+        <div class="col-span-4 pt-3">
+            <div class="text-6xl text-center text-blue-600">
+                <ion-icon name="add-circle" class="drop-shadow-lg hover:text-blue-500 cursor-pointer hover:ring-2 rounded-full"></ion-icon>
+            </div>
+            <label for="name">
+                <p>Name</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="name" id="name">
+            </label>
+            <label for="Category_name">
+                <p class="mt-2">Category name</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="category_name" id="category_name">
+            </label>
+            <label for="Price">
+                <p class="mt-2">Price</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Price" id="Price">
+            </label>
+            <label for="Stock">
+                <p class="mt-2">Stock</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Stock" id="Price">
+            </label>
+            <label for="submit">
+                <button class="text-white bg-blue-600 w-full mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Add</button>
+            </label>
+            <div class="w-full flex justify-between">
+                <button class="addMeta text-white bg-blue-600 mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Add Meta Informations</button>
+                <button class="addVariations text-white bg-blue-600 mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Add Variations</button>
+            </div>
+
+        </div>
+        <div class="col-span-4 flex flex-col items-center justify-center variations h-screen overflow-auto pt-2">
+        </div>
+    </form>
+</div>
+<?php
+$this->assets->outputJs();
+?>
