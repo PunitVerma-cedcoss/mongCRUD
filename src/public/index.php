@@ -86,6 +86,15 @@ $application = new Application($container);
 //     true
 // );
 
+$container->set(
+    'translator',
+    function () {
+        $lang  = $this->getRequest()->getquery()['locale'] ?? 'en';
+        $transComponentObject = new App\Components\LocaleComponent();
+        return $transComponentObject->getTranslator($lang);
+    }
+);
+
 // setting mongo db 🥳
 $container->set(
     'mongo',

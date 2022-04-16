@@ -7,6 +7,7 @@ class OrdersController extends Controller
 {
     public function indexAction()
     {
+        $this->view->t = $this->translator;
         // get products from db
         $this->assets->addJs("js/orders.js");
         // get products from db
@@ -19,6 +20,7 @@ class OrdersController extends Controller
     }
     public function addAction()
     {
+        $this->view->t = $this->translator;
         $this->assets->addJs("js/orders.js");
         // get products from db
         $mongo = new \App\Components\MongoComponent();

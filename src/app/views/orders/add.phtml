@@ -5,11 +5,11 @@
                 <ion-icon name="add-circle" class="drop-shadow-lg hover:text-blue-500 cursor-pointer hover:ring-2 rounded-full"></ion-icon>
             </div>
             <label for="name">
-                <p>Customer Name</p>
+                <p><?php echo $t->_('customer name'); ?></p>
                 <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="name" id="name">
             </label>
             <label for="Category_name">
-                <p class="mt-2">Choose Product</p>
+                <p class="mt-2"><?php echo $t->_('choose product'); ?></p>
                 <select name="product" class="w-full rounded-md border-gray-200 shadow-sm" id="products">
                     <option value="">choose a product</option>
                     <?php
@@ -23,14 +23,14 @@
             </label>
             <div class="varient">
                 <label for="variant_name">
-                    <p class="mt-2">Choose Variant</p>
+                    <p class="mt-2"><?php echo $t->_('choose varient'); ?></p>
                     <select name="product" class=" w-full rounded-md border-gray-200 shadow-sm" id="products">
                         <option value="">choose a varient</option>
                     </select>
                 </label>
             </div>
             <label for="Quantity">
-                <p class="mt-2">Quantity</p>
+                <p class="mt-2"><?php echo $t->_('quantity'); ?></p>
                 <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Quantity" id="Price">
             </label>
             <label for="submit">

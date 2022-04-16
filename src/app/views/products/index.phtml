@@ -6,13 +6,13 @@ header('X-Frame-Options: GOFORIT');
         <form action="/products" method="post" class="w-full flex items-center justify-center">
             <input type="text" class="grow px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 border-gray-300 hover:ring-indigo-300 rounded-l-lg border ml-0 shadow-md" name="search" id="" placeholder="search here" required>
             <button type="submit" class="px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 rounded-r-lg border ml-0 shadow-md">
-                Search Product
+                <?php echo $t->_('Search Product'); ?>
             </button>
         </form>
     </div>
     <div class="w-1/2 flex items-center">
         <button class="mr-2 px-3 py-2 text-gray-700 hover:shadow-lg hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 rounded-lg border ml-0 m-2 shadow-md">
-            Add Product
+            <?php echo $t->_('Add Product'); ?>
         </button>
         <?php
         if (isset($search)) {
@@ -26,14 +26,14 @@ header('X-Frame-Options: GOFORIT');
     </div>
     <table class="shadow-lg">
         <thead class="text-neutral-800 shadow-md">
-            <th class="p-3 border">Product Name</th>
-            <th class="p-3 border ">Product Category</th>
-            <th class="p-3 border ">Product Price</th>
-            <th class="p-3 border ">Product Stock</th>
-            <th class="p-3 border ">View Product</th>
-            <th class="p-3 border ">Quick View</th>
-            <th class="p-3 border ">Edit Product</th>
-            <th class="p-3 border ">Delete Product</th>
+            <th class="p-3 border"><?php echo $t->_('Product Name'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Product Category'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Product Price'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Product Stock'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('View Product'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Quick View'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Edit Product'); ?></th>
+            <th class="p-3 border "><?php echo $t->_('Delete Product'); ?></th>
         </thead>
         <tbody class="text-gray-700">
             <?php

@@ -1,31 +1,31 @@
 <div class="w-screen h-screen flex flex-col justify-center items-center">
     <div class="search p-3">
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 paid">paid</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 processing">processing</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 dispatched">dispatched</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 shipped">shipped</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 refunded">refunded</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 today">today</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_week">this week</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_month">this month</button>
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 custom">Custom</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 paid"><?php echo $t->_('paid'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 processing"><?php echo $t->_('processing'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 dispatched"><?php echo $t->_('dispatched'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 shipped"><?php echo $t->_('shipped'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 refunded"><?php echo $t->_('refunded'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 today"><?php echo $t->_('today'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_week"><?php echo $t->_('this week'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_month"><?php echo $t->_('this month'); ?></button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 custom"><?php echo $t->_('custom'); ?></button>
         <a href="/orders/">
-            <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 clear">Clear</button>
+            <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 clear"><?php echo $t->_('clear'); ?></button>
         </a>
     </div>
     <div class="date p-3 hidden">
         <input type="text" class="rounded-lg shadow-md border-gray-200 mr-2 from_date" placeholder="from date (dd-mm-YY)" name="" id="">
         <input type="text" class="rounded-lg shadow-md border-gray-200 mr-2 to_date" placeholder="to date  (dd-mm-YY)" name="" id="">
-        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 searchCustom">Search</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 searchCustom"><?php echo $t->_('search'); ?></button>
     </div>
     <table>
         <thead>
-            <th class="p-3 border">Customer Name</th>
-            <th class="p-3 border">Quantity</th>
-            <th class="p-3 border">Product</th>
-            <th class="p-3 border">Varient</th>
-            <th class="p-3 border">status</th>
-            <th class="p-3 border">order date</th>
+            <th class="p-3 border"><?php echo $t->_('customer name'); ?></th>
+            <th class="p-3 border"><?php echo $t->_('quantity'); ?></th>
+            <th class="p-3 border"><?php echo $t->_('product'); ?></th>
+            <th class="p-3 border"><?php echo $t->_('varient'); ?></th>
+            <th class="p-3 border"><?php echo $t->_('status'); ?></th>
+            <th class="p-3 border"><?php echo $t->_('order date'); ?></th>
         </thead>
         <tbody class="tbody">
             <?php

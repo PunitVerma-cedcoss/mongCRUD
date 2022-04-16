@@ -7,6 +7,7 @@ class ProductsController extends Controller
 {
     public function indexAction()
     {
+        $this->view->t = $this->translator;
         $this->assets->addJs("js/main.js");
         $this->assets->addCss("css/style.css");
         $mongo = new \App\Components\MongoComponent();
@@ -21,6 +22,7 @@ class ProductsController extends Controller
     }
     public function addAction()
     {
+        $this->view->t = $this->translator;
         $this->assets->addJs("js/main.js");
         // if got post
         if ($this->request->isPost()) {
@@ -38,6 +40,7 @@ class ProductsController extends Controller
     }
     public function detailsAction()
     {
+        $this->view->t = $this->translator;
         $id = explode("/", $this->request->getQuery()["_url"])[3];
         if (strlen($id) == 0) {
             header("location:/products");
@@ -51,6 +54,7 @@ class ProductsController extends Controller
     }
     public function editAction()
     {
+        $this->view->t = $this->translator;
         $this->assets->addJs("js/main.js");
         $id = explode("/", $this->request->getQuery()["_url"])[3];
         if (strlen($id) == 0) {
