@@ -46,6 +46,11 @@ class MongoComponent extends Injectable
         $resp = $this->mongo->$collection->find($query);
         return $resp;
     }
+    public function queryProject($collection, $query, $projection)
+    {
+        $resp = $this->mongo->$collection->find($query, $projection);
+        return $resp;
+    }
     public function updateDoc($collection, $id, $doc)
     {
         $resp = $this->mongo->$collection->replaceOne(['_id' => new \MongoDB\BSON\ObjectID($id)], $doc);
@@ -54,6 +59,11 @@ class MongoComponent extends Injectable
     public function delete($collection, $id)
     {
         $resp = $this->mongo->$collection->deleteOne(['_id' => new \MongoDB\BSON\ObjectID($id)]);
+        return $resp;
+    }
+    public function update($collection, $query, $data)
+    {
+        $resp = $this->mongo->$collection->updateOne($query, $data);
         return $resp;
     }
 }

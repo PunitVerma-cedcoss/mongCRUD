@@ -7,7 +7,8 @@ class ProductsController extends Controller
 {
     public function indexAction()
     {
-        $this->assets->addJs("css/style.css");
+        $this->assets->addJs("js/main.js");
+        $this->assets->addCss("css/style.css");
         $mongo = new \App\Components\MongoComponent();
         // if got post
         if ($this->request->isPost()) {

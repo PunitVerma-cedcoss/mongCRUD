@@ -1,1 +1,48 @@
-<h1>add order</h1>
+<div class="w-screen h-screen bg-gray-100 flex items-center justify-center">
+    <form action="/orders/add" method="post" class="w-full flex flex-col text-gray-700">
+        <div class=" pt-3 flex flex-col justify-center items-center">
+            <div class="text-6xl text-center text-blue-600">
+                <ion-icon name="add-circle" class="drop-shadow-lg hover:text-blue-500 cursor-pointer hover:ring-2 rounded-full"></ion-icon>
+            </div>
+            <label for="name">
+                <p>Customer Name</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="name" id="name">
+            </label>
+            <label for="Category_name">
+                <p class="mt-2">Choose Product</p>
+                <select name="product" class="w-full rounded-md border-gray-200 shadow-sm" id="products">
+                    <option value="">choose a product</option>
+                    <?php
+                    foreach ($data as $doc) {
+                    ?>
+                        <option value="<?php echo $doc["_id"] ?>"><?php echo $doc["product name"] ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </label>
+            <div class="varient">
+                <label for="variant_name">
+                    <p class="mt-2">Choose Variant</p>
+                    <select name="product" class=" w-full rounded-md border-gray-200 shadow-sm" id="products">
+                        <option value="">choose a varient</option>
+                    </select>
+                </label>
+            </div>
+            <label for="Quantity">
+                <p class="mt-2">Quantity</p>
+                <input type="text" class="rounded-md w-full border-gray-200 shadow-sm text-gray-800" name="Quantity" id="Price">
+            </label>
+            <label for="submit">
+                <button class="text-white bg-blue-600 w-full mt-4 p-2.5 hover:ring-2 hover:ring-offset-2 rounded-md shadow-sm">Create Order</button>
+            </label>
+        </div>
+    </form>
+</div>
+<script>
+    var a = JSON.parse(`<?php echo json_encode($list) ?>`)
+    console.log(a)
+</script>
+<?php
+$this->assets->outputJs();
+?>

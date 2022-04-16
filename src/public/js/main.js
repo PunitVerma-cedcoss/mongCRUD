@@ -1,7 +1,7 @@
-// meta counter
-var metaCtr = $("#mCtr").val() - 1 ?? 0
-// variatoin counter
-var varCtr = $("#vCtr").val() - 1 ?? 0
+// // meta counter
+var metaCtr = isNaN($("#mCtr").val() - 1) ? 0 : $("#mCtr").val() - 1
+// // variatoin counter
+var varCtr = isNaN($("#vCtr").val() - 1) ? 0 : $("#vCtr").val() - 1
 // handle meta click
 $(".addMeta").click(function (e) {
     e.preventDefault();
@@ -63,13 +63,33 @@ function addVariationField() {
 }
 
 function addVariationSetsField(ref) {
+    var fieldName = ref.parent().next().attr('name')
+    if (fieldName.trim() == '') {
+        fieldName = varCtr
+    }
+    else {
+        fieldName = fieldName.substr(fieldName.length - 3, 1)
+    }
     var m = `
     <div class="w-full">
-        <ion-icon data="${varCtr}" name="add-circle" class="addVariationSets cursor-pointer text-2xl hover:text-neutral-600"></ion-icon>
+        <ion-icon data="${fieldName}" name="add-circle" class="addVariationSets cursor-pointer text-2xl hover:text-neutral-600"></ion-icon>
     </div>
-        <input type="text" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubField${varCtr}[]" placeholder="Attribute name" required>
-        <input type="text" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubValue${varCtr}[]" placeholder="Attribute name" required>
+        <input type="text" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubField${fieldName}[]" placeholder="Attribute name" required>
+        <input type="text" class="rounded-md border-gray-200 shadow-sm text-gray-800 m-1" name="variationSubValue${fieldName}[]" placeholder="Attribute name" required>
     </div>
     `
     ref.parent().parent().append(m)
 }
+
+
+// handle modaal
+$('.modaal-open').click(function (e) {
+    e.preventDefault();
+    // grab the id
+    console.log($(".product_url").attr("src", "http://localhost:8080/products/details/" + $(this).attr("data")))
+    $(".backdrop").removeClass("hidden")
+});
+$('.modaal-close').click(function (e) {
+    e.preventDefault();
+    $(".backdrop").addClass("hidden")
+});

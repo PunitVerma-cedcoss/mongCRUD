@@ -1,1 +1,58 @@
-<h1>list iorders</h1>
+<div class="w-screen h-screen flex flex-col justify-center items-center">
+    <div class="search p-3">
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 paid">paid</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 processing">processing</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 dispatched">dispatched</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 shipped">shipped</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 refunded">refunded</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 today">today</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_week">this week</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 this_month">this month</button>
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 custom">Custom</button>
+        <a href="/orders/">
+            <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 clear">Clear</button>
+        </a>
+    </div>
+    <div class="date p-3 hidden">
+        <input type="text" class="rounded-lg shadow-md border-gray-200 mr-2 from_date" placeholder="from date (dd-mm-YY)" name="" id="">
+        <input type="text" class="rounded-lg shadow-md border-gray-200 mr-2 to_date" placeholder="to date  (dd-mm-YY)" name="" id="">
+        <button class="mr-2 px-3 py-2 border rounded-lg shadow-md capitalize hover:ring-2 hover:ring-offset-2 hover:ring-indigo-300 searchCustom">Search</button>
+    </div>
+    <table>
+        <thead>
+            <th class="p-3 border">Customer Name</th>
+            <th class="p-3 border">Quantity</th>
+            <th class="p-3 border">Product</th>
+            <th class="p-3 border">Varient</th>
+            <th class="p-3 border">status</th>
+            <th class="p-3 border">order date</th>
+        </thead>
+        <tbody class="tbody">
+            <?php
+            foreach ($data as $doc) {
+            ?>
+                <tr class="text-center">
+                    <td class="p-3 border"><?php echo $doc["customer name"] ?></td>
+                    <td class="p-3 border"><?php echo $doc["quantity"] ?></td>
+                    <td class="p-3 border"><?php echo $doc["productId"] ?></td>
+                    <td class="p-3 border"><?php echo $doc["varient"] ?></td>
+                    <td class="p-3 border">
+                        <select class="rounded-lg shadow-md border-gray-200 status" data="<?php echo $doc["_id"] ?>" name="status" id="">
+                            <option value="paid" <?php echo $doc["status"] == "paid" ? "selected" : "" ?>>paid</option>
+                            <option value="processing" <?php echo $doc["status"] == "processing" ? "selected" : "" ?>>processing</option>
+                            <option value="dispatched" <?php echo $doc["status"] == "dispatched" ? "selected" : "" ?>>dispatched</option>
+                            <option value="shipped" <?php echo $doc["status"] == "shipped" ? "selected" : "" ?>>shipped</option>
+                            <option value="refunded" <?php echo $doc["status"] == "refunded" ? "selected" : "" ?>>refunded</option>
+                        </select>
+                    </td>
+                    <td class="p-3 border"><?php echo date("d-m-Y", (string) $doc["order date"]) ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+<?php
+$this->assets->outputJs();
+?>

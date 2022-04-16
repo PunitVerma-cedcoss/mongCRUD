@@ -1,3 +1,6 @@
+<?php
+header('X-Frame-Options: GOFORIT');
+?>
 <div class="w-screen capitalize h-screen flex flex-col justify-center items-center">
     <div class="w-1/2">
         <form action="/products" method="post" class="w-full flex items-center justify-center">
@@ -28,6 +31,7 @@
             <th class="p-3 border ">Product Price</th>
             <th class="p-3 border ">Product Stock</th>
             <th class="p-3 border ">View Product</th>
+            <th class="p-3 border ">Quick View</th>
             <th class="p-3 border ">Edit Product</th>
             <th class="p-3 border ">Delete Product</th>
         </thead>
@@ -43,6 +47,7 @@
                         <td class="p-3 border"><?php echo $doc["product price"] ?></td>
                         <td class="p-3 border"><?php echo $doc["product stock"] ?></td>
                         <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/details/<?php echo $doc["_id"] ?>">View Product</a></td>
+                        <td class="p-3 border modaal-open italic text-pink-500 underline" data="<?php echo $doc["_id"] ?>">Quick view</td>
                         <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/edit/<?php echo $doc["_id"] ?>">Edit Product</a></td>
                         <td class="p-3 border"><a class="text-red-500 underline italic" href="/products/delete/<?php echo $doc["_id"] ?>">Delete Product</a></td>
                     </tr>
@@ -57,6 +62,7 @@
                         <td class="p-3 border"><?php echo $doc["product price"] ?></td>
                         <td class="p-3 border"><?php echo $doc["product stock"] ?></td>
                         <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/details/<?php echo $doc["_id"] ?>">View Product</a></td>
+                        <td class="p-3 border modaal-open italic text-pink-500 underline" data="<?php echo $doc["_id"] ?>">Quick view</td>
                         <td class="p-3 border"><a class="text-indigo-500 underline italic" href="/products/edit/<?php echo $doc["_id"] ?>">Edit Product</a></td>
                         <td class="p-3 border"><a class="text-red-500 underline italic" href="/products/delete/<?php echo $doc["_id"] ?>">Delete Product</a></td>
                     </tr>
@@ -67,6 +73,15 @@
         </tbody>
     </table>
 </div>
+<div class="backdrop modaal hidden w-screen h-screen flex justify-center items-center p-3 bg-gray-700/25 fixed top-0 ">
+    <div class="modaal-close w-full h-full bg-white p-3 rounded-lg border shadow-xl">
+        <div class="top w-full text-right">
+            <ion-icon name="close-circle" class="modaal-close text-2xl text-gray-700 hover:text-gray-900 cursor-pointer"></ion-icon>
+        </div>
+        <iframe class="w-full h-full product_url" src="http://localhost:8080/products/details/62594a58d34bb94c3207f022" title="product desc"></iframe>
+    </div>
+</div>
 <?php
+$this->assets->OutputJs();
 $this->assets->OutputCss();
 ?>
